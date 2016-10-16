@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="assets/css/signinStyle.css"/>
+
+<h1 class="title">When We Work</h1>
+<div class="login-page">
+    <div class="form">
+
+        <form ng-submit="signup()" class="login-form">
+            <input ng-model="user.firstName" type="text" placeholder="First Name" />
+            <input ng-model="user.lastName" type="text" placeholder="Last Name" />
+            <input ng-model="user.password" type="password" placeholder="password" />
+            <input ng-model="user.email" type="text" placeholder="email address" />
+            <button type="submit">create</button>
+            <p class="message">Already registered? <a href="/">Sign In</a></p>
+        </form>
+
+    </div>
+</div>
