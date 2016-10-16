@@ -1,5 +1,4 @@
 angular.module('hdsp')
-
 .constant('AUTH_EVENTS', {
   notAuthenticated: 'auth-not-authenticated'
 })
