@@ -16,5 +16,11 @@ You can also run it using http-server
   2. Navigate to project directory and run `http-server` 
 
 ##Connecting to cloud data api
-This can be done by changing the url in the constants.js file in the constants.js folder
+This can be done by changing the url in the `constants.js` file in the constants folder.
+
+AWS URL= `http://ec2-52-35-4-4.us-west-2.compute.amazonaws.com:8080/api`
+
+
+
+
 
