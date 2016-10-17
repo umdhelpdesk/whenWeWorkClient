@@ -9,5 +9,5 @@ This is the client side code for the scheduler project
 ##How to run locally
 
 
-The angular app need to run on a server for it to function. Yo can run it on a Stack.
+The angular app need to run on a server for it to function. You can run it on a Stack.
 
