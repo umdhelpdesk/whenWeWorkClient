@@ -10,6 +10,8 @@ angular.module('hdsp')
             AuthService.login($scope.user).then(function (msg) {
                 $state.go('dashboard'); //If succesfull
             }, function (errMsg) {
+
+                $scope.error = true;
                 console.log("Error");
             });
         };

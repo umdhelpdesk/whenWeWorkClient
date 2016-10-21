@@ -1,9 +1,11 @@
-<link rel="stylesheet" href="assets/css/signinStyle.css" />
+<link type="text/css" rel="stylesheet" href="assets/css/signinStyle.css" />
 
 <h1 class="title">When We Work</h1>
-
+<div ng-show="error" class="alrt"><strong>Invalid username or password</strong></div>
 <div class="login-page">
+
     <div class="form">
+
         <form ng-submit="login()" class="login-form">
             <input ng-model="user.email" type="text" placeholder="email" />
             <input ng-model="user.password" type="password" placeholder="password" />
