@@ -10,11 +10,33 @@ angular.module('hdsp')
             AuthService.login($scope.user).then(function (msg) {
                 $state.go('dashboard'); //If succesfull
             }, function (errMsg) {
+
+                $scope.error = true;
                 console.log("Error");
             });
         };
 
     })
+
+.controller('SignupCtrl', function ($scope, AuthService, $state) {
+    $scope.user = {
+        firstName: '',
+        lastName: '',
+        password: '',
+        email: ''
+    };
+
+    $scope.signup = function () {
+        AuthService.signup($scope.user).then(function (msg) {
+            $state.go('signin');
+            //todo success message
+
+        }, function (errMsg) {
+            //Todo failed signup message
+        });
+    };
+})
+
 .controller('DashboardCtrl', function ($scope, AuthService, API_ENDPOINT, $http, $state) {
     //For bootstrap ui
     $scope.isNavCollapsed = true;
@@ -42,21 +64,7 @@ angular.module('hdsp')
        $state.go('signin');
     };
 })
-.controller('SignupCtrl', function ($scope, AuthService, $state) {
-    $scope.user = {
-        firstName: '',
-        lastName: '',
-        password: '',
-        email: ''
-    };
 
-    $scope.signup = function () {
-        AuthService.signup($scope.user).then(function (msg) {
-            $state.go('signin');
-            //todo success message
-
-        }, function (errMsg) {
-            //Todo failed signup message
-        });
-    };
+.controller('AvailabilityCtrl', function() {
+    // TODO: Sprint #2
 });
