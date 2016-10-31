@@ -23,8 +23,8 @@ This can be done by changing the url in the `constants.js` file in the constants
 AWS URL= `http://ec2-35-162-0-205.us-west-2.compute.amazonaws.com:8080/api`
 
 ##TODO
- 1. ~~Show user a message when signin cridentials are wrong ~~
- 2.  ~~Show message when creating a user fails or is successful ~~
+ 1. <del>Show user a message when signin cridentials are wrong </del>
+ 2. <del>Show message when creating a user fails or is successful </del>
  3. Add angular calendar to dashboard
  4. Add UI for user to add Availability
 
