@@ -26,7 +26,7 @@
                     <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
                         <!-- can use ng repeat to add more items-->
                         <li>
-                            <a href="#/availability">Add Availability</a>
+                            <a href="#/dashboard/availability">Add Availability</a>
                         </li>
                         <li>
                             <a href="" ng-click="logout()"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -43,3 +43,4 @@
 </nav>
 
 <div class="container">{{memberinfo.msg}}</div>
+<ui-view></ui-view>

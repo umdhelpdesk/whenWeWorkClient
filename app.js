@@ -18,7 +18,7 @@ app.config( function($stateProvider, $urlRouterProvider, $locationProvider){
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'
     })
-    .state('addAvailability',{
+    .state('dashboard.addAvailability',{
         url:'/availability',
         templateUrl: 'views/availability.html',
         controller: 'AvailabilityCtrl'
