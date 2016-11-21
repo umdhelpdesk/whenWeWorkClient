@@ -1,3 +1,308 @@
 
 
-<h1>TODO: Sprint #2</h1>
+<h1>Availability Form</h1>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!--Font awesome-->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="../assets/js/jquery-3.1.1.min.js"></script>
+<script src="../assets/js/availability.js"></script>
+
+<style>
+.tempShift{
+  display:inline-block;
+}
+</style>
+
+<div class = " container">
+<table class = "table table-responsive table-striped">
+
+<thead>
+<tr class = "table-heading">
+  <th>Day</th> 
+
+  <th>Start</th> 
+
+  <th>End</th> 
+
+  <th></th> 
+
+  <th>Selected Times(click to remove)</th> 
+</tr>
+</thead>
+
+<tr id = 'Monday'>
+  <th class = "col-md-1"> Monday </th>
+  <td class = "col-md-3">
+  <div class = "form-group">
+  <select id = 'start' class="form-control">
+    <option value="8AM">8:00 AM</option>
+    <option value="9AM">9:00 AM</option>
+    <option value="10AM">10:00 AM</option>
+    <option value="11AM">11:00 AM</option>
+    <option value="12PM">12:00 PM</option>
+    <option value="1PM">1:00 PM</option>
+    <option value="2PM">2:00 PM</option>
+    <option value="3PM">3:00 PM</option>
+    <option value="4PM">4:00 PM</option>
+    <option value="5PM">5:00 PM</option>
+    <option value="6PM">6:00 PM</option>
+    <option value="7PM">7:00 PM</option>
+    <option value="8PM">8:00 PM</option>
+    <option value="9PM">9:00 PM</option>
+    <option value="10PM">10:00 PM</option>
+  </select>
+  </div>
+  </td>
+
+  <td class = "col-md-3">
+    <div class = "form-group">
+  <select id = 'end' class="form-control">
+    <option value="9AM">9:00 AM</option>
+    <option value="10AM">10:00 AM</option>
+    <option value="11AM">11:00 AM</option>
+    <option value="12PM">12:00 PM</option>
+    <option value="1PM">1:00 PM</option>
+    <option value="2PM">2:00 PM</option>
+    <option value="3PM">3:00 PM</option>
+    <option value="4PM">4:00 PM</option>
+    <option value="5PM">5:00 PM</option>
+    <option value="6PM">6:00 PM</option>
+    <option value="7PM">7:00 PM</option>
+    <option value="8PM">8:00 PM</option>
+    <option value="9PM">9:00 PM</option>
+    <option value="10PM">10:00 PM</option>
+  </select>
+  </div>
+  </td>
+
+  <td class = "col-md-1">
+    <button name = 'add' class = "btn btn-secondary" type = "submit" 
+    onClick = "addShift('Monday')"> Add Shift</button>
+  </td>
+
+  <td class = "col-md-4">
+  <div id = 'times'>
+  
+</div>
+</td>
+</tr>
+
+<tr id = 'Tuesday'>
+<th class = "col-md-1">Tuesday</th>
+<td class = "col-md-3">
+  <div class = "form-group">
+<select id = 'start' class="form-control">
+  <option value="8AM">8:00 AM</option>
+  <option value="9AM">9:00 AM</option>
+  <option value="10AM">10:00 AM</option>
+  <option value="11AM">11:00 AM</option>
+  <option value="12PM">12:00 PM</option>
+  <option value="1PM">1:00 PM</option>
+  <option value="2PM">2:00 PM</option>
+  <option value="3PM">3:00 PM</option>
+  <option value="4PM">4:00 PM</option>
+  <option value="5PM">5:00 PM</option>
+  <option value="6PM">6:00 PM</option>
+  <option value="7PM">7:00 PM</option>
+  <option value="8PM">8:00 PM</option>
+  <option value="9PM">9:00 PM</option>
+  <option value="10PM">10:00 PM</option>
+</select>
+</div>
+</td>
+<td class = "col-md-3">
+  <div class = "form-group">
+<select id = 'end' class="form-control">
+  <option value="9AM">9:00 AM</option>
+  <option value="10AM">10:00 AM</option>
+  <option value="11AM">11:00 AM</option>
+  <option value="12PM">12:00 PM</option>
+  <option value="1PM">1:00 PM</option>
+  <option value="2PM">2:00 PM</o0ption>
+  <option value="3PM">3:00 PM</option>
+  <option value="4PM">4:00 PM</option>
+  <option value="5PM">5:00 PM</option>
+  <option value="6PM">6:00 PM</option>
+  <option value="7PM">7:00 PM</option>
+  <option value="8PM">8:00 PM</option>
+  <option value="9PM">9:00 PM</option>
+  <option value="10PM">10:00 PM</option>
+  </select>
+  </div>
+</td>
+<td class = "col-md-1">
+<button name = 'add' class = "btn btn-secondary" type = "submit" onClick = "addShift('Tuesday')"> Add Shift</button>
+</td>
+<td class = "col-md-4">
+  <div id = 'times'>
+  
+</div>
+</td>
+</tr>
+
+<tr id = "Wednesday">
+<th class = "col-md-1">Wednesday</th>
+<td class = "col-md-3">
+  <div class = "form-group">
+<select id = 'start' class="form-control">
+  <option value="8AM">8:00 AM</option>
+  <option value="9AM">9:00 AM</option>
+  <option value="10AM">10:00 AM</option>
+  <option value="11AM">11:00 AM</option>
+  <option value="12PM">12:00 PM</option>
+  <option value="1PM">1:00 PM</option>
+  <option value="2PM">2:00 PM</option>
+  <option value="3PM">3:00 PM</option>
+  <option value="4PM">4:00 PM</option>
+  <option value="5PM">5:00 PM</option>
+  <option value="6PM">6:00 PM</option>
+  <option value="7PM">7:00 PM</option>
+  <option value="8PM">8:00 PM</option>
+  <option value="9PM">9:00 PM</option>
+  <option value="10PM">10:00 PM</option>
+</select>
+</div>
+</td>
+<td class = "col-md-3">
+  <div class = "form-group">
+<select id = 'end' class="form-control">
+  <option value="9AM">9:00 AM</option>
+  <option value="10AM">10:00 AM</option>
+  <option value="11AM">11:00 AM</option>
+  <option value="12PM">12:00 PM</option>
+  <option value="1PM">1:00 PM</option>
+  <option value="2PM">2:00 PM</option>
+  <option value="3PM">3:00 PM</option>
+  <option value="4PM">4:00 PM</option>
+  <option value="5PM">5:00 PM</option>
+  <option value="6PM">6:00 PM</option>
+  <option value="7PM">7:00 PM</option>
+  <option value="8PM">8:00 PM</option>
+  <option value="9PM">9:00 PM</option>
+  <option value="10PM">10:00 PM</option>
+</select>
+</div>
+</td>
+<td class = "col-md-1">
+<button name = 'add' class = "btn btn-secondary" type = "submit" onClick = "addShift('Wednesday')"> Add Shift</button>
+</td>
+
+<td class = "col-md-4">
+  <div id = 'times'>
+  
+</div>
+</td>
+</tr>
+
+
+<tr id = 'Thursday'>
+<th class = "col-md-1">Thursday</th>
+<td class = "col-md-3">
+  <div class = "form-group">
+<select id = 'start' class="form-control">
+  <option value="8AM">8:00 AM</option>
+  <option value="9AM">9:00 AM</option>
+  <option value="10AM">10:00 AM</option>
+  <option value="11AM">11:00 AM</option>
+  <option value="12PM">12:00 PM</option>
+  <option value="1PM">1:00 PM</option>
+  <option value="2PM">2:00 PM</option>
+  <option value="3PM">3:00 PM</option>
+  <option value="4PM">4:00 PM</option>
+  <option value="5PM">5:00 PM</option>
+  <option value="6PM">6:00 PM</option>
+  <option value="7PM">7:00 PM</option>
+  <option value="8PM">8:00 PM</option>
+  <option value="9PM">9:00 PM</option>
+  <option value="10PM">10:00 PM</option>
+</select>
+</div>
+</td>
+<td class = "col-md-3">
+  <div class = "form-group">
+<select id = 'end' class="form-control">
+  <option value="9AM">9:00 AM</option>
+  <option value="10AM">10:00 AM</option>
+  <option value="11AM">11:00 AM</option>
+  <option value="12PM">12:00 PM</option>
+  <option value="1PM">1:00 PM</option>
+  <option value="2PM">2:00 PM</option>
+  <option value="3PM">3:00 PM</option>
+  <option value="4PM">4:00 PM</option>
+  <option value="5PM">5:00 PM</option>
+  <option value="6PM">6:00 PM</option>
+  <option value="7PM">7:00 PM</option>
+  <option value="8PM">8:00 PM</option>
+  <option value="9PM">9:00 PM</option>
+  <option value="10PM">10:00 PM</option>
+</select>
+</div>
+</td>
+<td class = "col-md-1">
+<button name = 'add' class ="btn btn-secondary" type = "submit" onClick = "addShift('Thursday')"> Add Shift</button>
+</td>
+<td class = "col-md-4">
+  <div id = 'times'>
+ 
+</div>
+</td>
+</tr>
+
+<tr id = "Friday">
+<th class = "col-md-1">Friday</th>
+<td class = "col-md-3">
+  <div class = "form-group">
+<select id = 'start' class="form-control">
+  <option value="8AM">8:00 AM</option>
+  <option value="9AM">9:00 AM</option>
+  <option value="10AM">10:00 AM</option>
+  <option value="11AM">11:00 AM</option>
+  <option value="12PM">12:00 PM</option>
+  <option value="1PM">1:00 PM</option>
+  <option value="2PM">2:00 PM</option>
+  <option value="3PM">3:00 PM</option>
+  <option value="4PM">4:00 PM</option>
+  <option value="5PM">5:00 PM</option>
+  <option value="6PM">6:00 PM</option>
+  <option value="7PM">7:00 PM</option>
+  <option value="8PM">8:00 PM</option>
+  <option value="9PM">9:00 PM</option>
+  <option value="10PM">10:00 PM</option>
+</select>
+</div>
+</td>
+<td class = "col-md-3">
+  <div class = "form-group">
+<select id = 'end' class="form-control">
+  <option value="9AM">9:00 AM</option>
+  <option value="10AM">10:00 AM</option>
+  <option value="11AM">11:00 AM</option>
+  <option value="12PM">12:00 PM</option>
+  <option value="1PM">1:00 PM</option>
+  <option value="2PM">2:00 PM</option>
+  <option value="3PM">3:00 PM</option>
+  <option value="4PM">4:00 PM</option>
+  <option value="5PM">5:00 PM</option>
+  <option value="6PM">6:00 PM</option>
+  <option value="7PM">7:00 PM</option>
+  <option value="8PM">8:00 PM</option>
+  <option value="9PM">9:00 PM</option>
+  <option value="10PM">10:00 PM</option>
+</select>
+</div>
+</td>
+<td class = "col-md-1">
+<button name = 'add' class = "btn btn-secondary" type = "submit" onClick = "addShift('Friday')"> Add Shift</button>
+</td>
+<td class = "col-md-4">
+  <div id = 'times'>
+  
+</div>
+</td>
+</tr>
+</table> 
+
+<button name = "submit" style= "align: center" class = "btn btn-primary" onClick = submitAvailability('implement later')> Submit Availability </button>
+
+
+</div>
