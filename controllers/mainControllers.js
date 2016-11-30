@@ -67,4 +67,7 @@ angular.module('hdsp')
 
 .controller('AvailabilityCtrl', function() {
     // TODO: Sprint #2
+})
+.controller('CalendarCtrl', function() {
+
 });
