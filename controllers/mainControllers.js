@@ -65,6 +65,14 @@ angular.module('hdsp')
     };
 })
 
-.controller('AvailabilityCtrl', function() {
-    // TODO: Sprint #2
+.controller('AvailabilityCtrl', function ($scope, AuthService, API_ENDPOINT, $http, $state) {
+     
+
+
+     $scope.submitAvailability = function() {
+       //implement later
+    };
+})
+.controller('CalendarCtrl', function() {
+
 });

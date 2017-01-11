@@ -22,6 +22,11 @@ app.config( function($stateProvider, $urlRouterProvider, $locationProvider){
         url:'/availability',
         templateUrl: 'views/availability.html',
         controller: 'AvailabilityCtrl'
+    })
+    .state('calendar',{
+        url:'/calendar',
+        templateUrl: 'views/calendar.html',
+        controller: 'CalendarCtrl'
     });
 
 
