@@ -140,15 +140,15 @@ angular.module('hdsp')
         var currEnd = $scope.shifts[row][i].end;
 
         if(currStartId == startId) {
-            if(endId <= currEndId) { //starts at the same time and ends before or at the same time as an existing shift, no update
+            if(endId <= currEndId) { //same start time, earlier or same end time, no update
                 return;
-            } else { //starts at the same time and ends after an existing shift, update end
+            } else { //same start time, later end time, update end
                 $scope.removeShift(row,currStartId, currEndId);
                 $scope.shifts[row].push({start : strt, end : en, name: strt+ "-" + en, startId: startId, endId: endId});
                 return;
             }
         } else if (startId < currStartId) { 
-            if(endId >= currEndId) {    //starts before and ends after or at the same time, update start and end
+            if(endId >= currEndId) {    //earlier start time, later or same end time update start and end
                 $scope.removeShift(row,currStartId, currEndId);
                 $scope.shifts[row].push({start : strt, end : en, name: strt+ "-" + en, startId: startId, endId: endId});
                 return;
@@ -183,7 +183,7 @@ angular.module('hdsp')
    }
 
    $scope.submitAvailability = function() {
-       //process the info stored in the shifts object and send appopriate info to the db
+       //process the info stored in the shifts object and send appropriate info to the db
     };
 })
 .controller('CalendarCtrl', function() {
