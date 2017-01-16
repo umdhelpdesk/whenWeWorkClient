@@ -148,7 +148,7 @@ angular.module('hdsp')
                 return;
             }
         } else if (startId < currStartId) { 
-            if(endId >= currEndId) {    //earlier start time, later or same end time update start and end
+            if(endId >= currEndId) {    //earlier start time, later or same end time, update start and end
                 $scope.removeShift(row,currStartId, currEndId);
                 $scope.shifts[row].push({start : strt, end : en, name: strt+ "-" + en, startId: startId, endId: endId});
                 return;
