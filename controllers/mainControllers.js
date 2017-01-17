@@ -185,6 +185,7 @@ angular.module('hdsp')
    $scope.submitAvailability = function() {
        //process the info stored in the shifts object and send appropriate info to the db
     };
+
 })
 .controller('CalendarCtrl', function() {
 

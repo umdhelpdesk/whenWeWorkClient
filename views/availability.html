@@ -35,12 +35,16 @@
 
 
   <td class = "col-md-3">
+    
   <select ng-model = 'startSelect' class="form-control" ng-options = "time as time.name for time in availableTimes" >
   </select>
   </td>
 
   <td class = "col-md-3">
+
   <select ng-model = 'endSelect' class="form-control" ng-options = "time as time.name for time in availableTimes" >
+  </select>
+   
   </td>
 
   <td class = "col-md-1">
@@ -49,9 +53,12 @@
 
   <td class = "col-md-4">
   <div id = 'times'>
-    <button class = "btn btn-warning tempShift" ng-repeat = "shift in shifts[day]" ng-click = "removeShift(day,shift.startId,shift.endId)"> {{shift.name}}</btn>
+
+  <button class = "btn btn-warning tempShift" ng-repeat = "shift in shifts[day]" ng-click = "removeShift(day,shift.startId,shift.endId)"> {{shift.name}}</button>
   </div>
   </td>
+
+  
 </tr>
 </table> 
 
