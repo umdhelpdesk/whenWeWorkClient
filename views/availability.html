@@ -1,11 +1,10 @@
 
 
-<h1>Availability Form</h1>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <!--Font awesome-->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <script src="../assets/js/jquery-3.1.1.min.js"></script>
-<script src="../assets/js/availability.js"></script>
 
 <style>
 .tempShift{
@@ -13,7 +12,8 @@
 }
 </style>
 
-<div class = " container">
+<div class = "container" ng-app = "availability">
+    <h1>Availability Form</h1>
 <table class = "table table-responsive table-striped">
 
 <thead>
@@ -26,423 +26,43 @@
 
   <th></th> 
 
-  <th>Selected Times(click to remove)</th> 
+  <th>Please Select The Times You Are Unavailable(click to remove)</th> 
 </tr>
 </thead>
 
-<tr id = 'Monday'>
-  <th class = "col-md-1"> Monday </th>
+<tr ng-repeat = "day in days">
+  <th class = "col-md-1"> {{day}} </th>
+
+
   <td class = "col-md-3">
-  <div class = "form-group">
-  <select id = 'start' class="form-control">
-    <option value="8">8:00 AM</option>
-    <option value="830">8:30 AM</option>
-    <option value="9">9:00 AM</option>
-    <option value="930">9:30 AM</option>
-    <option value="10">10:00 AM</option>
-    <option value="1030">10:30 AM</option>
-    <option value="11">11:00 AM</option>
-    <option value="1130">11:30 AM</option>
-    <option value="12">12:00 PM</option>
-    <option value="1230">12:30 PM</option>
-    <option value="13">1:00 PM</option>
-    <option value="1330">1:30 PM</option>
-    <option value="14">2:00 PM</option>
-    <option value="1430">2:30 PM</option>
-    <option value="15">3:00 PM</option>
-    <option value="1530">3:30 PM</option>
-    <option value="16">4:00 PM</option>
-    <option value="1630">4:30 PM</option>
-    <option value="17">5:00 PM</option>
-    <option value="1730">5:30 PM</option>
-    <option value="18">6:00 PM</option>
-    <option value="1830">6:30 PM</option>
-    <option value="19">7:00 PM</option>
-    <option value="1930">7:30 PM</option>
-    <option value="20">8:00 PM</option>
-    <option value="2030">8:30 PM</option>
-    <option value="21">9:00 PM</option>
-    <option value="2130">9:30 PM</option>
-    <option value="22">10:00 PM</option>
+    
+  <select ng-model = 'startSelect' class="form-control" ng-options = "time as time.name for time in availableTimes" >
   </select>
-  </div>
   </td>
 
   <td class = "col-md-3">
-    <div class = "form-group">
-  <select id = 'end' class="form-control">
-    <option value="830">8:30 AM</option>
-    <option value="9">9:00 AM</option>
-    <option value="930">9:30 AM</option>
-    <option value="10">10:00 AM</option>
-    <option value="1030">10:30 AM</option>
-    <option value="11">11:00 AM</option>
-    <option value="1130">11:30 AM</option>
-    <option value="12">12:00 PM</option>
-    <option value="1230">12:30 PM</option>
-    <option value="13">1:00 PM</option>
-    <option value="1330">1:30 PM</option>
-    <option value="14">2:00 PM</option>
-    <option value="1430">2:30 PM</option>
-    <option value="15">3:00 PM</option>
-    <option value="1530">3:30 PM</option>
-    <option value="16">4:00 PM</option>
-    <option value="1630">4:30 PM</option>
-    <option value="17">5:00 PM</option>
-    <option value="1730">5:30 PM</option>
-    <option value="18">6:00 PM</option>
-    <option value="1830">6:30 PM</option>
-    <option value="19">7:00 PM</option>
-    <option value="1930">7:30 PM</option>
-    <option value="20">8:00 PM</option>
-    <option value="2030">8:30 PM</option>
-    <option value="21">9:00 PM</option>
-    <option value="2130">9:30 PM</option>
-    <option value="22">10:00 PM</option>
+
+  <select ng-model = 'endSelect' class="form-control" ng-options = "time as time.name for time in availableTimes" >
   </select>
-  </div>
+   
   </td>
 
   <td class = "col-md-1">
-    <button name = 'add' class = "btn btn-secondary" type = "submit" 
-    onClick = "addShift('Monday')"> Add Shift</button>
+    <button name = 'add' class = "btn btn-secondary" ng-click = "addShift(day, startSelect.name, endSelect.name)">Add Shift</button>
   </td>
 
   <td class = "col-md-4">
   <div id = 'times'>
+
+  <button class = "btn btn-warning tempShift" ng-repeat = "shift in shifts[day]" ng-click = "removeShift(day,shift.startId,shift.endId)"> {{shift.name}}</button>
+  </div>
+  </td>
+
   
-</div>
-</td>
-</tr>
-
-<tr id = 'Tuesday'>
-<th class = "col-md-1">Tuesday</th>
-<td class = "col-md-3">
-  <div class = "form-group">
-  <select id = 'start' class="form-control">
-    <option value="8">8:00 AM</option>
-    <option value="830">8:30 AM</option>
-    <option value="9">9:00 AM</option>
-    <option value="930">9:30 AM</option>
-    <option value="10">10:00 AM</option>
-    <option value="1030">10:30 AM</option>
-    <option value="11">11:00 AM</option>
-    <option value="1130">11:30 AM</option>
-    <option value="12">12:00 PM</option>
-    <option value="1230">12:30 PM</option>
-    <option value="13">1:00 PM</option>
-    <option value="1330">1:30 PM</option>
-    <option value="14">2:00 PM</option>
-    <option value="1430">2:30 PM</option>
-    <option value="15">3:00 PM</option>
-    <option value="1530">3:30 PM</option>
-    <option value="16">4:00 PM</option>
-    <option value="1630">4:30 PM</option>
-    <option value="17">5:00 PM</option>
-    <option value="1730">5:30 PM</option>
-    <option value="18">6:00 PM</option>
-    <option value="1830">6:30 PM</option>
-    <option value="19">7:00 PM</option>
-    <option value="1930">7:30 PM</option>
-    <option value="20">8:00 PM</option>
-    <option value="2030">8:30 PM</option>
-    <option value="21">9:00 PM</option>
-    <option value="2130">9:30 PM</option>
-    <option value="22">10:00 PM</option>
-  </select>
-  </div>
-</td>
-<td class = "col-md-3">
-  <div class = "form-group">
-  <select id = 'end' class="form-control">
-    <option value="830">8:30 AM</option>
-    <option value="9">9:00 AM</option>
-    <option value="930">9:30 AM</option>
-    <option value="10">10:00 AM</option>
-    <option value="1030">10:30 AM</option>
-    <option value="11">11:00 AM</option>
-    <option value="1130">11:30 AM</option>
-    <option value="12">12:00 PM</option>
-    <option value="1230">12:30 PM</option>
-    <option value="13">1:00 PM</option>
-    <option value="1330">1:30 PM</option>
-    <option value="14">2:00 PM</option>
-    <option value="1430">2:30 PM</option>
-    <option value="15">3:00 PM</option>
-    <option value="1530">3:30 PM</option>
-    <option value="16">4:00 PM</option>
-    <option value="1630">4:30 PM</option>
-    <option value="17">5:00 PM</option>
-    <option value="1730">5:30 PM</option>
-    <option value="18">6:00 PM</option>
-    <option value="1830">6:30 PM</option>
-    <option value="19">7:00 PM</option>
-    <option value="1930">7:30 PM</option>
-    <option value="20">8:00 PM</option>
-    <option value="2030">8:30 PM</option>
-    <option value="21">9:00 PM</option>
-    <option value="2130">9:30 PM</option>
-    <option value="22">10:00 PM</option>
-  </select>
-  </div>
-</td>
-<td class = "col-md-1">
-<button name = 'add' class = "btn btn-secondary" type = "submit" onClick = "addShift('Tuesday')"> Add Shift</button>
-</td>
-<td class = "col-md-4">
-  <div id = 'times'>
-  
-</div>
-</td>
-</tr>
-
-<tr id = "Wednesday">
-<th class = "col-md-1">Wednesday</th>
-<td class = "col-md-3">
-  <div class = "form-group">
-  <select id = 'start' class="form-control">
-    <option value="8">8:00 AM</option>
-    <option value="830">8:30 AM</option>
-    <option value="9">9:00 AM</option>
-    <option value="930">9:30 AM</option>
-    <option value="10">10:00 AM</option>
-    <option value="1030">10:30 AM</option>
-    <option value="11">11:00 AM</option>
-    <option value="1130">11:30 AM</option>
-    <option value="12">12:00 PM</option>
-    <option value="1230">12:30 PM</option>
-    <option value="13">1:00 PM</option>
-    <option value="1330">1:30 PM</option>
-    <option value="14">2:00 PM</option>
-    <option value="1430">2:30 PM</option>
-    <option value="15">3:00 PM</option>
-    <option value="1530">3:30 PM</option>
-    <option value="16">4:00 PM</option>
-    <option value="1630">4:30 PM</option>
-    <option value="17">5:00 PM</option>
-    <option value="1730">5:30 PM</option>
-    <option value="18">6:00 PM</option>
-    <option value="1830">6:30 PM</option>
-    <option value="19">7:00 PM</option>
-    <option value="1930">7:30 PM</option>
-    <option value="20">8:00 PM</option>
-    <option value="2030">8:30 PM</option>
-    <option value="21">9:00 PM</option>
-    <option value="2130">9:30 PM</option>
-    <option value="22">10:00 PM</option>
-  </select>
-  </div>
-</td>
-<td class = "col-md-3">
-  <div class = "form-group">
-  <select id = 'end' class="form-control">
-    <option value="830">8:30 AM</option>
-    <option value="9">9:00 AM</option>
-    <option value="930">9:30 AM</option>
-    <option value="10">10:00 AM</option>
-    <option value="1030">10:30 AM</option>
-    <option value="11">11:00 AM</option>
-    <option value="1130">11:30 AM</option>
-    <option value="12">12:00 PM</option>
-    <option value="1230">12:30 PM</option>
-    <option value="13">1:00 PM</option>
-    <option value="1330">1:30 PM</option>
-    <option value="14">2:00 PM</option>
-    <option value="1430">2:30 PM</option>
-    <option value="15">3:00 PM</option>
-    <option value="1530">3:30 PM</option>
-    <option value="16">4:00 PM</option>
-    <option value="1630">4:30 PM</option>
-    <option value="17">5:00 PM</option>
-    <option value="1730">5:30 PM</option>
-    <option value="18">6:00 PM</option>
-    <option value="1830">6:30 PM</option>
-    <option value="19">7:00 PM</option>
-    <option value="1930">7:30 PM</option>
-    <option value="20">8:00 PM</option>
-    <option value="2030">8:30 PM</option>
-    <option value="21">9:00 PM</option>
-    <option value="2130">9:30 PM</option>
-    <option value="22">10:00 PM</option>
-  </select>
-  </div>
-</td>
-<td class = "col-md-1">
-<button name = 'add' class = "btn btn-secondary" type = "submit" onClick = "addShift('Wednesday')"> Add Shift</button>
-</td>
-
-<td class = "col-md-4">
-  <div id = 'times'>
-  
-</div>
-</td>
-</tr>
-
-
-<tr id = 'Thursday'>
-<th class = "col-md-1">Thursday</th>
-<td class = "col-md-3">
-  <div class = "form-group">
-  <select id = 'start' class="form-control">
-    <option value="8">8:00 AM</option>
-    <option value="830">8:30 AM</option>
-    <option value="9">9:00 AM</option>
-    <option value="930">9:30 AM</option>
-    <option value="10">10:00 AM</option>
-    <option value="1030">10:30 AM</option>
-    <option value="11">11:00 AM</option>
-    <option value="1130">11:30 AM</option>
-    <option value="12">12:00 PM</option>
-    <option value="1230">12:30 PM</option>
-    <option value="13">1:00 PM</option>
-    <option value="1330">1:30 PM</option>
-    <option value="14">2:00 PM</option>
-    <option value="1430">2:30 PM</option>
-    <option value="15">3:00 PM</option>
-    <option value="1530">3:30 PM</option>
-    <option value="16">4:00 PM</option>
-    <option value="1630">4:30 PM</option>
-    <option value="17">5:00 PM</option>
-    <option value="1730">5:30 PM</option>
-    <option value="18">6:00 PM</option>
-    <option value="1830">6:30 PM</option>
-    <option value="19">7:00 PM</option>
-    <option value="1930">7:30 PM</option>
-    <option value="20">8:00 PM</option>
-    <option value="2030">8:30 PM</option>
-    <option value="21">9:00 PM</option>
-    <option value="2130">9:30 PM</option>
-    <option value="22">10:00 PM</option>
-  </select>
-  </div>
-</td>
-<td class = "col-md-3">
-  <div class = "form-group">
-  <select id = 'end' class="form-control">
-    <option value="830">8:30 AM</option>
-    <option value="9">9:00 AM</option>
-    <option value="930">9:30 AM</option>
-    <option value="10">10:00 AM</option>
-    <option value="1030">10:30 AM</option>
-    <option value="11">11:00 AM</option>
-    <option value="1130">11:30 AM</option>
-    <option value="12">12:00 PM</option>
-    <option value="1230">12:30 PM</option>
-    <option value="13">1:00 PM</option>
-    <option value="1330">1:30 PM</option>
-    <option value="14">2:00 PM</option>
-    <option value="1430">2:30 PM</option>
-    <option value="15">3:00 PM</option>
-    <option value="1530">3:30 PM</option>
-    <option value="16">4:00 PM</option>
-    <option value="1630">4:30 PM</option>
-    <option value="17">5:00 PM</option>
-    <option value="1730">5:30 PM</option>
-    <option value="18">6:00 PM</option>
-    <option value="1830">6:30 PM</option>
-    <option value="19">7:00 PM</option>
-    <option value="1930">7:30 PM</option>
-    <option value="20">8:00 PM</option>
-    <option value="2030">8:30 PM</option>
-    <option value="21">9:00 PM</option>
-    <option value="2130">9:30 PM</option>
-    <option value="22">10:00 PM</option>
-  </select>
-  </div>
-</td>
-<td class = "col-md-1">
-<button name = 'add' class ="btn btn-secondary" type = "submit" onClick = "addShift('Thursday')"> Add Shift</button>
-</td>
-<td class = "col-md-4">
-  <div id = 'times'>
- 
-</div>
-</td>
-</tr>
-
-<tr id = "Friday">
-<th class = "col-md-1">Friday</th>
-<td class = "col-md-3">
-  <div class = "form-group">
-  <select id = 'start' class="form-control">
-    <option value="8">8:00 AM</option>
-    <option value="830">8:30 AM</option>
-    <option value="9">9:00 AM</option>
-    <option value="930">9:30 AM</option>
-    <option value="10">10:00 AM</option>
-    <option value="1030">10:30 AM</option>
-    <option value="11">11:00 AM</option>
-    <option value="1130">11:30 AM</option>
-    <option value="12">12:00 PM</option>
-    <option value="1230">12:30 PM</option>
-    <option value="13">1:00 PM</option>
-    <option value="1330">1:30 PM</option>
-    <option value="14">2:00 PM</option>
-    <option value="1430">2:30 PM</option>
-    <option value="15">3:00 PM</option>
-    <option value="1530">3:30 PM</option>
-    <option value="16">4:00 PM</option>
-    <option value="1630">4:30 PM</option>
-    <option value="17">5:00 PM</option>
-    <option value="1730">5:30 PM</option>
-    <option value="18">6:00 PM</option>
-    <option value="1830">6:30 PM</option>
-    <option value="19">7:00 PM</option>
-    <option value="1930">7:30 PM</option>
-    <option value="20">8:00 PM</option>
-    <option value="2030">8:30 PM</option>
-    <option value="21">9:00 PM</option>
-    <option value="2130">9:30 PM</option>
-    <option value="22">10:00 PM</option>
-  </select>
-  </div>
-</td>
-<td class = "col-md-3">
-  <div class = "form-group">
-  <select id = 'end' class="form-control">
-    <option value="830">8:30 AM</option>
-    <option value="9">9:00 AM</option>
-    <option value="930">9:30 AM</option>
-    <option value="10">10:00 AM</option>
-    <option value="1030">10:30 AM</option>
-    <option value="11">11:00 AM</option>
-    <option value="1130">11:30 AM</option>
-    <option value="12">12:00 PM</option>
-    <option value="1230">12:30 PM</option>
-    <option value="13">1:00 PM</option>
-    <option value="1330">1:30 PM</option>
-    <option value="14">2:00 PM</option>
-    <option value="1430">2:30 PM</option>
-    <option value="15">3:00 PM</option>
-    <option value="1530">3:30 PM</option>
-    <option value="16">4:00 PM</option>
-    <option value="1630">4:30 PM</option>
-    <option value="17">5:00 PM</option>
-    <option value="1730">5:30 PM</option>
-    <option value="18">6:00 PM</option>
-    <option value="1830">6:30 PM</option>
-    <option value="19">7:00 PM</option>
-    <option value="1930">7:30 PM</option>
-    <option value="20">8:00 PM</option>
-    <option value="2030">8:30 PM</option>
-    <option value="21">9:00 PM</option>
-    <option value="2130">9:30 PM</option>
-    <option value="22">10:00 PM</option>
-  </select>
-  </div>
-</td>
-<td class = "col-md-1">
-<button name = 'add' class = "btn btn-secondary" type = "submit" onClick = "addShift('Friday')"> Add Shift</button>
-</td>
-<td class = "col-md-4">
-  <div id = 'times'>
-  
-</div>
-</td>
 </tr>
 </table> 
 
-<button name = "submit" style= "align: center" class = "btn btn-primary" onClick = submitAvailability('implement later')> Submit Availability </button>
+<button name = "hm" style= "align: center" class = "btn btn-primary" ng-click = "submitAvailability()"> Submit Availability </button>
 
 
 </div>
