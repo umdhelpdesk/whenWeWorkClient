@@ -23,7 +23,12 @@ app.config( function($stateProvider, $urlRouterProvider, $locationProvider){
         templateUrl: 'views/availability.html',
         controller: 'AvailabilityCtrl'
     })
-    .state('calendar',{
+    .state('dashboard.admin',{
+        url:'/admin',
+        templateUrl: 'views/adminmain.html',
+        controller: 'AdminCtrl'
+    })
+    .state('dashboard.calendar',{
         url:'/calendar',
         templateUrl: 'views/calendar.html',
         controller: 'CalendarCtrl'

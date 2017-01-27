@@ -187,6 +187,9 @@ angular.module('hdsp')
     };
 
 })
+.controller('AdminCtrl', function() {
+
+})
 .controller('CalendarCtrl', function() {
 
 });
