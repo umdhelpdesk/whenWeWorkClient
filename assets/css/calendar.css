@@ -1,12 +1,27 @@
-span {
+td.time {
   color: #5bc0de;
-  font-size: 20px;
+  font-size: 18px;
+  background-color: #F9F9F9;
 }
 
 td {
-  height: 100px;
+  height: 40px;
+  width: 135px;
+  border:1px solid #A9A9A9;
+}
+
+span.total {
+  color: #D95647;
+  padding-left: 40px;
+  font-size: 14px;
 }
 
 table {
-  border: 1px;
+  border-radius: 25px;
+  border:1px solid #A9A9A9;
+}
+
+.uib-tab {
+  width: 153px;
+  text-align: center;
 }
